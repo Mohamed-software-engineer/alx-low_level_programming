@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-/* main - will assign a random number to the variable n each time it is executed
+/**
+ *main - will assign a random number to the variable n each time it is executed
  *Return: 0 return
  */
 
@@ -13,15 +14,15 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 	if (n > 0)
 	{
-		printf("%d is postive\n" , n);
+		printf("%d is postive\n", n);
 	}
-	else if(n == 0)
+	else if (n == 0)
 	{
-		printf("%d is zero\n" , n);
+		printf("%d is zero\n", n);
 	}
-	else 
+	else
 	{
-		printf("%d is negative\n" , n);
+		printf("%d is negative\n", n);
 	}
 	return (0);
 }
