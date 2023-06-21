@@ -1,4 +1,10 @@
-#include <unistd.h>
+#ifndef MAIN_H
+#define MAIN_H
+
+int _putchar(char c);
+
+#endif /* MAIN_H */
+#include <main.h>
 
 /**
  * _putchar - writes the character c to stdout
