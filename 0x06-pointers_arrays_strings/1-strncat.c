@@ -24,7 +24,7 @@ char *_strncat(char *dest, char *src, int n)
 	}
 	if (n == sizeof(src))
 	{
-		*p = '\n';
+		*p = '\0';
 	}
 	return (dest);
 }
