@@ -5,7 +5,7 @@
  * @argv: array of char
  * Return:0 value
  */
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	while (argc--)
 	{
