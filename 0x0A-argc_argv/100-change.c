@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
 	}
 	{
 		int min_coins = get_minimum_coins(cents);
+
 		printf("%d\n", min_coins);
 	}
 
