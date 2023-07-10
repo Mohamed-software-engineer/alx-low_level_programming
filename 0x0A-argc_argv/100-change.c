@@ -27,8 +27,7 @@ int get_minimum_coins(int cents)
  */
 int main(int argc, char *argv[])
 {
-	int cents = atoi(argv[1]);
-	int min_coins = get_minimum_coins(cents);
+	int cents;
 
 	if (argc != 2)
 	{
@@ -36,12 +35,17 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
+	cents = atoi(argv[1]);
+
 	if (cents < 0)
 	{
 		printf("0\n");
 		return (0);
 	}
-	printf("%d\n", min_coins);
+	{
+		int min_coins = get_minimum_coins(cents);
+		printf("%d\n", min_coins);
+	}
 
 	return (0);
 }
