@@ -17,9 +17,15 @@ char *create_array(unsigned int size, char c)
 	{
 		return (NULL);
 	}
+	if (s == NULL)
+	{
+		return (NULL);
+	}
 	for (; i < size; i++)
 	{
-		s[i] = c;
+		*s = c;
+		s++;
 	}
+	free(s);
 	return (s);
 }
