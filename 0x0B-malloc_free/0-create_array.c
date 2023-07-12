@@ -23,9 +23,7 @@ char *create_array(unsigned int size, char c)
 	}
 	for (; i < size; i++)
 	{
-		*s = c;
-		s++;
+		s[i] = c;	
 	}
-	free(s);
 	return (s);
 }
