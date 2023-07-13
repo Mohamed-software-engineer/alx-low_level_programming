@@ -13,8 +13,9 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *p;
 	unsigned int i,j;
+	size_t len_s1 = strlen(s1);
 
-	p = malloc(sizeof(char) * (strlen(s1) + 1 + n));
+	p = malloc(sizeof(char) * (len_s1 + 1 + n));
 	if (s1 == NULL)
 	{
 		s1 = "";
