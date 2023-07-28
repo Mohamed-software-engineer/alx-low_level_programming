@@ -5,13 +5,15 @@
  * add_node_end - add node to end linked list
  * @head: pointr of list_t
  * @str: string
- * Retutn: address of a new element or NULL
+ * Return: address of a new element or NULL
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new_node = malloc(sizeof (list_t));
+	list_t *new_node = malloc(sizeof(list_t));
 	list_t *current = *head;
 
+	if (new_node == NULL)
+		return (NULL);
 	if (str == NULL)
 		return (NULL);
 	new_node->str = strdup(str);
