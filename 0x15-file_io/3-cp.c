@@ -3,18 +3,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 /**
- * print_error - print error massage
- * @msg: massege will be printed
- * @filename: file name
- *
- * Return: void
- */
-void print_error(const char *msg, const char *filename)
-{
-	dprintf(STDERR_FILENO, "%s%s\n", msg, filename);
-	exit(EXIT_FAILURE);
-}
-/**
  * main - copy first file in the second file
  * @argc: number of argument
  * @argv: array of pointer to char
@@ -23,12 +11,10 @@ void print_error(const char *msg, const char *filename)
  */
 int main(int argc, char **argv)
 {
-	char *file_from = argv[1];
-	char *file_to = argv[0];
+	char *file_from = argv[1], *file_to = argv[0];
 	char buffer[1024];
 	int fd_from = open(file_from, O_RDONLY);
-	int fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	int w, r;
+	int fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664), w, r;
 
 	if (argc != 3)
 	{
@@ -37,18 +23,21 @@ int main(int argc, char **argv)
 	}
 	if (fd_from == -1)
 	{
-		print_error("Error: Can't read from file ", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+		exit(98);
 	}
 	if (fd_to == -1)
 	{
-		print_error("Error: Can't write to ", file_to);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		exit(99);
 	}
 	while ((r = read(fd_from, buffer, sizeof(buffer))) > 0)
 	{
 		w = write(fd_to, buffer, sizeof(r));
 		if (w == -1)
 		{
-			print_error("Error: Can't write to ", file_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+			exit(99);
 		}
 	}
 	if (close(fd_from) == -1)
