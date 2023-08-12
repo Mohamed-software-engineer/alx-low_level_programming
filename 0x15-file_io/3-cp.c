@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 	int fd_from = open(file_from, O_RDONLY);
 	int fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664), w, r;
 
+	buffer = malloc(1024 * sizeof(char));
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
