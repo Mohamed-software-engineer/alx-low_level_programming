@@ -9,19 +9,19 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t fdopen = open(filename, O_RDONLY | O_WRONLY);
+	ssize_t fdopen = open(filename, O_RDONLY);
 	ssize_t fdread;
 	size_t fdwrite;
 	char *buf;
 
-	buf = malloc(sizeof(*buf) * 1024);
+	buf = malloc(letters);
 	fdread = read(fdopen, buf, letters);
 
 	if (fdopen == -1 || fdread == -1)
 		return (0);
 	if (filename == NULL)
 		return (0);
-	fdwrite = write(fdopen, buf, letters);
+	fdwrite = write(STDOUT_FILENO, buf, letters);
 	if (fdwrite != letters)
 		return (0);
 	return (fdread);
